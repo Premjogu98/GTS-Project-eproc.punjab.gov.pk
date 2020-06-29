@@ -97,7 +97,6 @@ def check_Duplication(SegFeild):
             results = mycursor.fetchall()
             mydb.close()
             mycursor.close()
-            # print('SQL Connected Local_connection')
             a1 = 1
             print("Code Reached On check_Duplication")
             return results
@@ -106,8 +105,7 @@ def check_Duplication(SegFeild):
             Error: str = str(e)
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-            print("Error ON : ", sys._getframe().f_code.co_name + "--> " + str(e), "\n", exc_type, "\n", fname, "\n",
-                  exc_tb.tb_lineno)
+            print("Error ON : ", sys._getframe().f_code.co_name + "--> " + str(e), "\n", exc_type, "\n", fname, "\n",exc_tb.tb_lineno)
             Error_fun(Error,Function_name,SegFeild)
             time.sleep(10)
             a1 = 0
