@@ -10,27 +10,26 @@ from Insert_On_databse import insert_in_Local
 import ctypes
 import string
 import html
-
+import wx
+app = wx.App()
 
 def ChromeDriver():
-    File_Location = open("D:\\0 PYTHON EXE SQL CONNECTION & DRIVER PATH\\eproc.punjab.gov.pk\\Location For Database & Driver.txt", "r")
-    TXT_File_AllText = File_Location.read()
-    Chromedriver = str(TXT_File_AllText).partition("Driver=")[2].partition("\")")[0].strip()
+    # File_Location = open("D:\\0 PYTHON EXE SQL CONNECTION & DRIVER PATH\\eproc.punjab.gov.pk\\Location For Database & Driver.txt", "r")
+    # TXT_File_AllText = File_Location.read()
+    # Chromedriver = str(TXT_File_AllText).partition("Driver=")[2].partition("\")")[0].strip()
     # chrome_options = Options()
     # chrome_options.add_extension('D:\\0 PYTHON EXE SQL CONNECTION & DRIVER PATH\\eproc.punjab.gov.pk\\Browsec-VPN.crx')  # ADD EXTENSION Browsec-VPN
     # browser = webdriver.Chrome(executable_path=str(Chromedriver), chrome_options=chrome_options)
-    browser = webdriver.Chrome(executable_path=str(Chromedriver))
+    browser = webdriver.Chrome(executable_path=str(f"C:\\chromedriver.exe"))
     browser.get(
         """https://chrome.google.com/webstore/detail/browsec-vpn-free-and-unli/omghfjlpggmjjaagoclmmobgdodcjboh?hl=en" ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://chrome.google.com/webstore/detail/browsec-vpn-free-and-unli/omghfjlpggmjjaagoclmmobgdodcjboh%3Fhl%3Den&amp;ved=2ahUKEwivq8rjlcHmAhVtxzgGHZ-JBMgQFjAAegQIAhAB""")
     for Add_Extension in browser.find_elements_by_xpath('/html/body/div[4]/div[2]/div/div/div[2]/div[2]/div'):
         Add_Extension.click()
         break
-    import wx
-    app = wx.App()
-    wx.MessageBox(' -_-  Add Extension and Select Proxy Between 30 SEC -_- ', 'Info', wx.OK | wx.ICON_WARNING)
-    time.sleep(30)  # WAIT UNTIL CHANGE THE MANUAL VPN SETTING
+    
+    wx.MessageBox(' -_-  Add Extension and Select Proxy Between 25 SEC -_- ', 'Info', wx.OK | wx.ICON_WARNING)
+    time.sleep(25)  # WAIT UNTIL CHANGE THE MANUAL VPN SETTING
     browser.get("https://eproc.punjab.gov.pk/ActiveTenders.aspx")
-    browser.set_window_size(1024, 600)
     browser.maximize_window()
     # browser.switch_to.window(browser.window_handles[1])
     # browser.close()
@@ -76,12 +75,6 @@ def Scrap_data(browser):
                                 publish_date1 = datetime_object.strftime("%Y-%m-%d")
                                 if publish_date1 >= Global_var.From_Date:
                                     print("Publish Date Alive")
-                                    print(" Total: " + str(Global_var.Total) + " Duplicate: " + str(
-                                        Global_var.duplicate) + " Expired: " + str(
-                                        Global_var.expired) + " Inserted: " + str(
-                                        Global_var.inserted) + " Skipped: " + str(
-                                        Global_var.skipped) + " Deadline Not given: " + str(
-                                        Global_var.deadline_Not_given) + " QC Tenders: " + str(Global_var.QC_Tenders),"\n")
                                     break
                                 else:
                                     print("Publish Date Dead")
@@ -101,9 +94,7 @@ def Scrap_data(browser):
 
                             #  ====================================== THIS INFORMATION FOR HTML FILE PURPOSE ================================================================================
                             Global_var.Total += 1
-                            for Department in browser.find_elements_by_xpath(
-                                    '/html/body/form/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/table/tbody/tr[' + str(
-                                            add) + ']/td[6]'):
+                            for Department in browser.find_elements_by_xpath('/html/body/form/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/table/tbody/tr[' + str(add) + ']/td[6]'):
                                 Department = Department.get_attribute("innerText").upper()
                                 if Department == "THQ HOSPITAL, SHORKOT":
                                     Address = "Jhang Shorkot Multan Road, Shorkot, Jhang, Punjab 35010, Pakistan" + "<br>\n" + "Phone: " + "+92 47 5310971"
@@ -811,16 +802,23 @@ def Scrap_data(browser):
                             SagField[27] = "0"  # Financier
                             SagField[28] = "https://eproc.punjab.gov.pk/ActiveTenders.aspx"
                             SagField[31] = "eproc.punjab.gov.pk"
-                            for Segdata in range(len(SagField)):
-                                print(Segdata, end=' ')
-                                print(SagField[Segdata])
+                            for SegIndex in range(len(SagField)):
+                                print(SegIndex, end=' ')
+                                print(SagField[SegIndex])
+                                SagField[SegIndex] = html.unescape(str(SagField[SegIndex]))
+                                SagField[SegIndex] = str(SagField[SegIndex]).replace("'", "''")
                             check_date(SagField)
+                            print(" Total: " + str(Global_var.Total) + " Duplicate: " + str(
+                                        Global_var.duplicate) + " Expired: " + str(
+                                        Global_var.expired) + " Inserted: " + str(
+                                        Global_var.inserted) + " Skipped: " + str(
+                                        Global_var.skipped) + " Deadline Not given: " + str(
+                                        Global_var.deadline_Not_given) + " QC Tenders: " + str(Global_var.QC_Tenders),"\n")
                             v = True
                         except Exception as b:
                             exc_type, exc_obj, exc_tb = sys.exc_info()
                             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-                            print("Error ON Scraping Method: ", sys._getframe().f_code.co_name + "--> " + str(b), "\n", exc_type, "\n",
-                                  fname, "\n", exc_tb.tb_lineno)
+                            print("Error ON : ", sys._getframe().f_code.co_name + "--> " + str(b), "\n", exc_type, "\n",fname, "\n", exc_tb.tb_lineno)
                             v = False
                 for Next_pages in browser.find_elements_by_xpath('//*[@id="ctl00_ContentPlaceHolderSRIS_rdgrdManageTender_ctl00"]/tfoot/tr/td/table/tbody/tr/td/div[3]/input[1]'):
                     Next_pages.click()
@@ -855,8 +853,7 @@ def check_date(SagField):
     except Exception as e:
         exc_type , exc_obj , exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-        print("Error ON : " , sys._getframe().f_code.co_name + "--> " + str(e) , "\n" , exc_type , "\n" , fname , "\n" ,
-              exc_tb.tb_lineno)
+        print("Error ON : " , sys._getframe().f_code.co_name + "--> " + str(e) , "\n" , exc_type , "\n" , fname , "\n" ,exc_tb.tb_lineno)
 
 
 ChromeDriver()
