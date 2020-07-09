@@ -152,29 +152,29 @@ def create_filename(SegFeild):
     basename = "PY133"
     Current_dateTime = datetime.now().strftime("%Y%m%d%H%M%S%f")
     Fileid = "".join([basename , Current_dateTime])
-     a = 0
-     while a == 0:
-         try:
-             File_path = 'Z:\\' + Fileid + '.html'
-             file1 = open(File_path , "w" , encoding='utf-8')
-             Html_wala_Tag = "<table align=\"center\" border=\"1\" style=\"width:98%;border-spacing:0;border-collapse: collapse;border:1px solid #666666; margin-top:5px; margin-bottom:5px;\">" +\
-                                             "<tr><td colspan=\"2\"; style=\"background-color:#146faf; font-weight: bold; padding:7px;border-bottom:1px solid #666666; color:white;\">Tender Details</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Title</td><td style=\"padding:7px;\">" + str(SegFeild[19]) + "</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Detail</td><td style=\"padding:7px;\">" + str(SegFeild[18])+"</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Department</td><td style=\"padding:7px;\">" + str(SegFeild[12]) + "</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Close Date</td><td style=\"padding:7px;\">" + str(SegFeild[24]) + "</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Notice Attachment </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[4])+" target=\"_blank\">View</a>""</td></tr>" +\
-                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Bidding Document </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[5])+" target=\"_blank\">View</a>""</td></tr>" + "</tr></table>"
-             HTML_File_String = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\">" +\
-                                              "<head><link rel=\"shortcut icon\" type=\"image/png\" href=\"https://www.tendersontime.com/favicon.ico\"/></head>" +\
-                                              "<body>" + Html_wala_Tag + "</body></html>"
-             
-             file1.write(str(HTML_File_String))
-             file1.close()
-             time.sleep(2)
-             a = 1
-             return Fileid
-         except Exception as e:
+    a = 0
+    while a == 0:
+        try:
+            File_path = 'Z:\\' + Fileid + '.html'
+            file1 = open(File_path , "w" , encoding='utf-8')
+            Html_wala_Tag = "<table align=\"center\" border=\"1\" style=\"width:98%;border-spacing:0;border-collapse: collapse;border:1px solid #666666; margin-top:5px; margin-bottom:5px;\">" +\
+                                            "<tr><td colspan=\"2\"; style=\"background-color:#146faf; font-weight: bold; padding:7px;border-bottom:1px solid #666666; color:white;\">Tender Details</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Title</td><td style=\"padding:7px;\">" + str(SegFeild[19]) + "</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Detail</td><td style=\"padding:7px;\">" + str(SegFeild[18])+"</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Department</td><td style=\"padding:7px;\">" + str(SegFeild[12]) + "</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Close Date</td><td style=\"padding:7px;\">" + str(SegFeild[24]) + "</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Notice Attachment </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[4])+" target=\"_blank\">View</a>""</td></tr>" +\
+                                        "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Bidding Document </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[5])+" target=\"_blank\">View</a>""</td></tr>" + "</tr></table>"
+            HTML_File_String = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\">" +\
+                                            "<head><link rel=\"shortcut icon\" type=\"image/png\" href=\"https://www.tendersontime.com/favicon.ico\"/></head>" +\
+                                            "<body>" + Html_wala_Tag + "</body></html>"
+            
+            file1.write(str(HTML_File_String))
+            file1.close()
+            time.sleep(2)
+            a = 1
+            return Fileid
+        except Exception as e:
             Function_name :str = sys._getframe().f_code.co_name
             Error : str = str(e)
             Error_fun(Error,Function_name,SegFeild)
