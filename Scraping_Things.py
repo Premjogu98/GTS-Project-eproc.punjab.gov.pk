@@ -805,6 +805,7 @@ def Scrap_data(browser):
                             SagField[31] = "eproc.punjab.gov.pk"
                             SagField[42] = SagField[7]
                             SagField[43] = ''
+                            
                             for SegIndex in range(len(SagField)):
                                 print(SegIndex, end=' ')
                                 print(SagField[SegIndex])
