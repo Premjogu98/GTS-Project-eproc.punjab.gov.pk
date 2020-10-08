@@ -152,29 +152,29 @@ def create_filename(SegFeild):
     basename = "PY133"
     Current_dateTime = datetime.now().strftime("%Y%m%d%H%M%S%f")
     Fileid = "".join([basename , Current_dateTime])
-     a = 0
-     while a == 0:
-         try:
-             File_path = 'Z:\\' + Fileid + '.html'
-             file1 = open(File_path , "w" , encoding='utf-8')
-             Html_wala_Tag = "<table align=\"center\" border=\"1\" style=\"width:98%;border-spacing:0;border-collapse: collapse;border:1px solid #666666; margin-top:5px; margin-bottom:5px;\">" +\
-                                             "<tr><td colspan=\"2\"; style=\"background-color:#146faf; font-weight: bold; padding:7px;border-bottom:1px solid #666666; color:white;\">Tender Details</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Title</td><td style=\"padding:7px;\">" + str(SegFeild[19]) + "</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Detail</td><td style=\"padding:7px;\">" + str(SegFeild[18])+"</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Department</td><td style=\"padding:7px;\">" + str(SegFeild[12]) + "</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Close Date</td><td style=\"padding:7px;\">" + str(SegFeild[24]) + "</td></tr>" +\
-                                             "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Notice Attachment </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[4])+" target=\"_blank\">View</a>""</td></tr>" +\
-                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Bidding Document </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[5])+" target=\"_blank\">View</a>""</td></tr>" + "</tr></table>"
-             HTML_File_String = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\">" +\
-                                              "<head><link rel=\"shortcut icon\" type=\"image/png\" href=\"https://www.tendersontime.com/favicon.ico\"/></head>" +\
-                                              "<body>" + Html_wala_Tag + "</body></html>"
-             
-             file1.write(str(HTML_File_String))
-             file1.close()
-             time.sleep(2)
-             a = 1
-             return Fileid
-         except Exception as e:
+    a = 0
+    while a == 0:
+        try:
+            File_path = 'Z:\\' + Fileid + '.html'
+            file1 = open(File_path , "w" , encoding='utf-8')
+            Html_wala_Tag = "<table align=\"center\" border=\"1\" style=\"width:98%;border-spacing:0;border-collapse: collapse;border:1px solid #666666; margin-top:5px; margin-bottom:5px;\">" +\
+                                            "<tr><td colspan=\"2\"; style=\"background-color:#146faf; font-weight: bold; padding:7px;border-bottom:1px solid #666666; color:white;\">Tender Details</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Title</td><td style=\"padding:7px;\">" + str(SegFeild[19]) + "</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Detail</td><td style=\"padding:7px;\">" + str(SegFeild[18])+"</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Department</td><td style=\"padding:7px;\">" + str(SegFeild[12]) + "</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Close Date</td><td style=\"padding:7px;\">" + str(SegFeild[24]) + "</td></tr>" +\
+                                            "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Tender Notice Attachment </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[4])+" target=\"_blank\">View</a>""</td></tr>" +\
+                                        "<tr bgcolor=\"#ffffff\" onmouseover=\"this.style.backgroundColor='#def3ff'\" onmouseout=\"this.style.backgroundColor=''\"><td style=\"padding:7px;\">Bidding Document </td><td style=\"padding:7px;\">""<a href="+str(SegFeild[5])+" target=\"_blank\">View</a>""</td></tr>" + "</tr></table>"
+            HTML_File_String = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\">" +\
+                                            "<head><link rel=\"shortcut icon\" type=\"image/png\" href=\"https://www.tendersontime.com/favicon.ico\"/></head>" +\
+                                            "<body>" + Html_wala_Tag + "</body></html>"
+            
+            file1.write(str(HTML_File_String))
+            file1.close()
+            time.sleep(2)
+            a = 1
+            return Fileid
+        except Exception as e:
             Function_name :str = sys._getframe().f_code.co_name
             Error : str = str(e)
             Error_fun(Error,Function_name,SegFeild)
@@ -250,7 +250,7 @@ def insert_L2L(SegFeild  , Fileid):
                 a4 = 0
                 time.sleep(10)
 
-    sql = "INSERT INTO l2l_tenders_tbl(notice_no,file_id,purchaser_name,deadline,country,description,purchaser_address,purchaser_email,purchaser_url,purchaser_emd,purchaser_value,financier,deadline_two,tender_details,ncbicb,status,added_on,search_id,cpv_value,cpv_userid,quality_status,quality_id,quality_addeddate,source,tender_doc_file,Col1,Col2,Col3,Col4,Col5,file_name,user_id,status_download_id,save_status,selector_id,select_date,datatype,compulsary_qc,notice_type,cqc_status,DocCost,DocLastDate)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+    sql = "INSERT INTO l2l_tenders_tbl(notice_no,file_id,purchaser_name,deadline,country,description,purchaser_address,purchaser_email,purchaser_url,purchaser_emd,purchaser_value,financier,deadline_two,tender_details,ncbicb,status,added_on,search_id,cpv_value,cpv_userid,quality_status,quality_id,quality_addeddate,source,tender_doc_file,Col1,Col2,Col3,Col4,Col5,file_name,user_id,status_download_id,save_status,selector_id,select_date,datatype,compulsary_qc,notice_type,cqc_status,DocCost,DocLastDate,currency,project_location,set_aside)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
     val = (str(SegFeild[13]), file_id, str(SegFeild[12]), str(SegFeild[24]), str(SegFeild[7]), str(SegFeild[19]),
            str(SegFeild[2]), str(SegFeild[1]), str(SegFeild[8]), str(SegFeild[26]), str(SegFeild[20]),
            str(SegFeild[27]), str(SegFeild[24]), str(SegFeild[18]), ncb_icb, dms_entrynotice_tblstatus, str(added_on),
@@ -258,7 +258,7 @@ def insert_L2L(SegFeild  , Fileid):
            str(quality_addeddate), str(SegFeild[31]), str(SegFeild[28]), Col1, Col2, Col3, Col4, Col5, file_name,
            dms_downloadfiles_tbluser_id, dms_downloadfiles_tblstatus, dms_downloadfiles_tblsave_status, selector_id,
            str(select_date), dms_downloadfiles_tbldatatype, dms_entrynotice_tblcompulsary_qc,
-           dms_entrynotice_tblnotice_type, dms_entrynotice_tbl_cqc_status, str(SegFeild[22]), str(SegFeild[41]))
+           dms_entrynotice_tblnotice_type, dms_entrynotice_tbl_cqc_status, str(SegFeild[22]), str(SegFeild[41]),str(SegFeild[21]),str(SegFeild[42]),str(SegFeild[43]))
     a5 = 0
     while a5 == 0:
         try:

@@ -62,7 +62,7 @@ def Scrap_data(browser):
             for Next_page_Tab in range(int(Pages)):
                 for add in range(1, 100, 1):
                     SagField = []
-                    for data in range(42):
+                    for data in range(45):
                         SagField.append('')
                     v = False
                     while v == False:
@@ -796,12 +796,15 @@ def Scrap_data(browser):
                             SagField[18] = Tender_Details.strip()
 
                             SagField[7] = "PK"
-                            SagField[20] = "0.0"
+                            SagField[20] = ""
+                            SagField[21] = ""
                             SagField[22] = "0.0"
                             SagField[26] = "0.0"
                             SagField[27] = "0"  # Financier
                             SagField[28] = "https://eproc.punjab.gov.pk/ActiveTenders.aspx"
                             SagField[31] = "eproc.punjab.gov.pk"
+                            SagField[42] = SagField[7]
+                            SagField[43] = ''
                             for SegIndex in range(len(SagField)):
                                 print(SegIndex, end=' ')
                                 print(SagField[SegIndex])
